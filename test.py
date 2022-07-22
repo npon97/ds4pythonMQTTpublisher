@@ -1,7 +1,6 @@
 from pyPS4Controller.controller import Controller
 from paho.mqtt import client as mqtt_client
 import random
-import time
 import logging
 
 broker = 'test.mosquitto.org'
@@ -10,6 +9,8 @@ topic = "python/mqtt"
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 username = ''
 password = ''
+
+logger = logging.Logger('basic_logger', level=logging.DEBUG)
 
 class MyController(Controller):
 
