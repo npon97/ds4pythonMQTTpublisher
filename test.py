@@ -2,6 +2,7 @@ from pyPS4Controller.controller import Controller
 from paho.mqtt import client as mqtt_client
 import random
 import logging
+import json
 
 broker = 'test.mosquitto.org'
 port = 1883
@@ -32,9 +33,9 @@ def on_message(client, userdata, message):
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
-            print("Connected to MQTT Broker!")
+            logging.info("Connected to MQTT Broker!")
         else:
-            print("Failed to connect, return code %d\n", rc)
+            logging.warn("Failed to connect, return code %d\n", rc)
     # Set Connecting Client ID
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
